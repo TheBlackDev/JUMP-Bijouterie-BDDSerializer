@@ -5,4 +5,7 @@
     }
 </style>
 
-<div class="pen-footer"><a href="./logout.php"><i class="material-icons">logout</i>Logout</a></div>
+
+<div class="form-group submit">
+    <a href="./logout.php"><i class="material-icons">logout</i>Logout</a>
+</div>

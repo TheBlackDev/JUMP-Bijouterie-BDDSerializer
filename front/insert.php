@@ -64,4 +64,4 @@ if(!empty($_POST)){
 
 }
 
-require './form1_front.php';
+require './insert_front.php';

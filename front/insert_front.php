@@ -17,6 +17,7 @@
 <body>
   
 <!-- Form-->
+
 <div class="form">
   <div class="form-toggle"></div>
   <div class="form-panel one">
@@ -124,8 +125,6 @@
     </div>
   </div>
 </div>
-
-<?php require './inc/footer.php'; ?>
 
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src='http://codepen.io/andytran/pen/vLmRVp.js'></script>

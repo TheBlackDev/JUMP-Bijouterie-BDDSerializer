@@ -11,7 +11,7 @@
 
     if(isset($_SESSION['auth'])) {
         $_SESSION['flash']['info'] = "Vous êtes déjà connecté.";
-        header('Location: ./index.php');
+        header('Location: ./insert.php');
         exit();
     }
 
