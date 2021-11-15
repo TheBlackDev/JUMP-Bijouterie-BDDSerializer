@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html >
+
+<html>
 <head>
   <meta charset="UTF-8">
   <title>Insertion d'un nouveau produit</title>
@@ -23,16 +24,16 @@
       <h1>Insertion d'un nouveau produit</h1>
     </div>
     <div class="form-content">
-      <form>
+      <form id="formid" method="post">
         <div class="form-collumn-container">
           <div class="form-collumn">
             <div class="form-group">
               <label for="lot">Lot</label>
-              <input type="text" id="lot" name="lot" placeholder="Automatiquement précisé si non précisé"/>
+              <input type="number" id="lot" name="lot" placeholder="Automatiquement précisé si non précisé"/>
             </div>
             <div class="form-group">
               <label for="buy_price">Prix d'achat (en €)</label>
-              <input type="number" step=".01" id="buy_price" name="buy_price" required="required"/>
+              <input type="number" value="0" step=".01" id="buy_price" name="buy_price" required="required"/>
             </div>
             <div class="form-group">
               <label for="buy_date">Date d'achat</label>
@@ -70,6 +71,11 @@
               <label for="periode">Période</label>
               <input type="text" id="periode" name="periode" required="required"/>
             </div>
+            <div class="form-group">
+              <label for="buy_price">Marque</label>
+              <input type="text" id="brand" name="brand" required="required"/>
+            </div>
+            
           </div>
           <div class="form-collumn">
 
@@ -84,8 +90,8 @@
               </datalist>
             </div>
             <div class="form-group">
-              <label for="buy_price">Marque</label>
-              <input type="text" id="brand" name="brand" required="required"/>
+              <label for="weight">Poids Brut (en g.)</label>
+              <input type="number" value="0" step=".01" id="weight" name="weight" required="required"/>
             </div>
             <div class="form-group">
               <label for="pierre">Pierre</label>
@@ -99,6 +105,10 @@
                 <option value="Perle">
                 <option value="Autre pierre">
               </datalist>
+            </div>
+            <div class="form-group">
+              <label for="picture">Photo</label>
+              <input type="file" id="picture" name="picture" required="required"/>
             </div>
           </div>
 
@@ -147,6 +157,7 @@
 <script src='http://codepen.io/andytran/pen/vLmRVp.js'></script>
 
     <script src="js/index.js"></script>
+    <script src="js/form.js"></script>
 
 </body>
 </html>
