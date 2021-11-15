@@ -71,11 +71,12 @@
     </div>
   </div>-->
 </div>
-<!--<div class="pen-footer"><a href="https://www.behance.net/gallery/30478397/Login-Form-UI-Library" target="_blank"><i class="material-icons">arrow_backward</i>View on Behance</a><a href="https://github.com/andyhqtran/UI-Library/tree/master/Login%20Form" target="_blank">View on Github<i class="material-icons">arrow_forward</i></a></div>-->
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='http://codepen.io/andytran/pen/vLmRVp.js'></script>
 
-    <script src="js/index.js"></script>
+  
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='http://codepen.io/andytran/pen/vLmRVp.js'></script>
+  <script src="js/index.js"></script>
 
 </body>
 </html>
