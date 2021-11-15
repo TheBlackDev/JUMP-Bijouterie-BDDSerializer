@@ -1,5 +1,13 @@
 <?php 
 
+require "./inc/header.php";
+
+if(!isset($_SESSION['auth'])){
+    $_SESSION['flash']['danger'] = "Vous devez être connecté pour accéder à cette page";
+    header('Location: ./login.php');
+    exit();
+}
+
 require_once "./inc/db.php";
 
 if(!empty($_POST)){
@@ -56,6 +64,4 @@ if(!empty($_POST)){
 
 }
 
-?>
-
-<?php require './form1.html'; ?>
+require './form1_front.php';
