@@ -28,13 +28,20 @@ body {
   z-index: 15;
   position: relative;
   background: #FFFFFF;
-  width: 600px;
+  width: 80%;
   border-radius: 4px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-  margin: 100px auto 10px;
+  margin: 3% auto 10px;
   overflow: hidden;
 }
+
+.form-collumn-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
 .form-toggle {
   z-index: 10;
   position: absolute;
@@ -89,9 +96,15 @@ body {
           justify-content: space-between;
   margin: 0 0 20px;
 }
-.form-group:last-child {
-  margin: 0;
+
+.form-group.submit {
+  width: 50%;
+  margin: 0 auto; 
+  margin-top: 20px;
 }
+/*.form-group:last-child {
+  margin: 0;
+}*/
 .form-group label {
   display: block;
   margin: 0 0 10px;
@@ -167,7 +180,7 @@ body {
   text-decoration: none;
 }
 .form-panel {
-  padding: 60px 60px 60px 60px; /*calc(5% + 60px)*/
+  padding: 40px 60px 40px 60px; /*calc(5% + 60px)*/
   box-sizing: border-box;
 }
 .form-panel.one:before {
