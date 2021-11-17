@@ -7,11 +7,13 @@
     require './inc/header.php';
     require './login_front.php';
 
+    $redirection = "./insert.php";
+
     $errors = array();
 
     if(isset($_SESSION['auth'])) {
         $_SESSION['flash']['info'] = "Vous êtes déjà connecté.";
-        header('Location: ./insert.php');
+        header('Location: ' . $redirection);
         exit();
     }
 
@@ -32,7 +34,7 @@
             if(password_verify($_POST['password'], $user->hash)) {
                 $_SESSION['auth'] = $user;
                 $_SESSION['flash']['success'] = "Bienvenue " . $user->username . " !";
-                header('Location: form1.php');
+                header('Location: ' . $redirection);
                 exit();
             } else {
                 $_SESSION['flash']['danger'] = "Identifiant ou mot de passe incorrect.";

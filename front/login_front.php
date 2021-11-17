@@ -33,10 +33,6 @@
           <input type="password" id="password" name="password" required="required"/>
         </div>
         <div class="form-group">
-          <label class="form-remember">
-            <input type="checkbox"/>Se souvenir de moi
-        </div>
-        <div class="form-group">
           <button type="submit">S'identifier</button>
         </div>
       </form>
@@ -45,9 +41,6 @@
 </div>
 
 
-
-
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script src='http://codepen.io/andytran/pen/vLmRVp.js'></script>
   <script src="js/index.js"></script>
 
