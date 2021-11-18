@@ -119,10 +119,24 @@ body {
   text-transform: uppercase;
   letter-spacing: .2em;
 }
+
+.form-group label#checkbox-label {
+  display: block;
+  width:100%;
+  text-align:center;
+  margin: 0 0 10px;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+}
+
 .two .form-group label {
   color: #FFFFFF;
 }
-.form-group input {
+.form-group input{
   outline: none;
   display: block;
   background: rgba(0, 0, 0, 0.1);
@@ -139,6 +153,75 @@ body {
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
+
+.form-group select {
+  outline: none;
+  background: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 46px;
+  border: 0;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 12px 20px;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  line-height: inherit;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  overflow: hidden;
+}
+
+.form-group select#pierre:hover {
+  outline: none;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 170px;
+  border: 0;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 12px 20px;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  line-height: inherit;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.form-group select#metal:hover {
+  outline: none;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 190px;
+  border: 0;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 12px 20px;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  line-height: inherit;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+#bottom-line {
+  display: grid;
+  grid-template-columns: 10fr 1fr;
+  grid-gap: 20px;
+}
+
+input#sold {
+  margin-top: -20px;
+  scale: 0.6;
+}
+
 .form-group input:focus {
   color: rgba(0, 0, 0, 0.8);
 }
@@ -208,7 +291,7 @@ body {
   background: #4285F4;
   width: 100%;
   height: 100%;
-  padding: 60px calc(10% + 60px) 60px 60px;
+  padding: 60px calc(10% + 60px) 60px 70px;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   cursor: pointer;

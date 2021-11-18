@@ -85,13 +85,16 @@
 
             <div class="form-group">
               <label for="metal">Métal</label>
-              <input type="text" list="metal-list" id="metal" name="metal" required="required"/>
-              <datalist id="metal-list">
-                <option value="Or spécial">
-                <option value="Or jaune">
-                <option value="Or gris">
-                <option value="Or rose">
-              </datalist>
+              <select id="metal" name="metal" required="required" multiple="multiple"/>
+                <option value="os">Or spécial</option>
+                <option value="oj2">Or jaune 2</option>
+                <option value="og">Or gris</option>
+                <option value="or">Or rose</option>
+                <option value="o14">Or 14k</option>
+                <option value="pla">Platine</option>
+                <option value="ag">Argent</option>
+                <option value="aci">Acier</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="weight">Poids Brut (en g.)</label>
@@ -99,18 +102,17 @@
             </div>
             <div class="form-group">
               <label for="pierre">Pierre</label>
-              <input type="text" list="pierre-list" id="pierre" name="pierre" required="required"/>
-              <input type="text" list="pierre-list" id="pierre" name="pierre" required="required"/>
-              <datalist id="pierre-list">
-                <option value="Diamant">
-                <option value="Emeraude">
-                <option value="Saphir">
-                <option value="Rubis">
-                <option value="Aiguemarine">
-                <option value="Perle">
-                <option value="Autre pierre">
-              </datalist>
+              <select id="pierre" name="pierre" required="required" multiple="multiple"/>
+                <option value="Diamant">Diamant</option>
+                <option value="Emeraude">Emeraude</option>
+                <option value="Saphir">Saphir</option>
+                <option value="Rubis">Rubis</option>
+                <option value="Aiguemarine">Aiguemarine</option>
+                <option value="Perle">Perle</option>
+                <option value="Autre pierre">Autre pierre</option>
+              </select>
             </div>
+
             <div class="form-group">
               <label for="picture">Photo</label>
               <input type="file" id="picture" name="picture" required="required"/>
@@ -118,9 +120,15 @@
           </div>
 
         </div>
-        <div class="form-group">
-          <label for="description">Description</label>
-          <input type="text" id="description" name="description" required="required"/>
+        <div id="bottom-line">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" id="description" name="description" required="required"/>
+          </div>
+          <div class="form-group">
+            <label for="sold" id="checkbox-label">Vendu</label>
+            <input type="checkbox" id="sold" name="sold"/>
+          </div>
         </div>
         <div class="form-group submit">
             <button type="submit">Envoyer</button>
