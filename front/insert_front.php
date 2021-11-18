@@ -11,6 +11,8 @@
 
       <link rel="stylesheet" href="css/style-form.css">
 
+
+  
   
 </head>
 
@@ -20,12 +22,13 @@
 
 <div class="form">
   <div class="form-toggle"></div>
+  <form id="formid" method="post">
   <div class="form-panel one">
     <div class="form-header">
       <h1>Insertion d'un nouveau produit</h1>
     </div>
     <div class="form-content">
-      <form id="formid" method="post">
+      
         <div class="form-collumn-container">
           <div class="form-collumn">
             <div class="form-group">
@@ -97,6 +100,7 @@
             <div class="form-group">
               <label for="pierre">Pierre</label>
               <input type="text" list="pierre-list" id="pierre" name="pierre" required="required"/>
+              <input type="text" list="pierre-list" id="pierre" name="pierre" required="required"/>
               <datalist id="pierre-list">
                 <option value="Diamant">
                 <option value="Emeraude">
@@ -121,14 +125,70 @@
         <div class="form-group submit">
             <button type="submit">Envoyer</button>
         </div>
-      </form>
     </div>
   </div>
+
+  <div class="form-panel two">
+    <div class="form-header">
+      <h1>Informations complémentaires (optionnelles)</h1>
+    </div>
+    <div class="form-content">
+        <div class="form-collumn-container-bis" style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+        ">
+          <div class="form-collumn">
+            <div class="form-group">
+              <label for="sell_place">Lieu de la vente</label>
+              <input type="text" id="sell_place" name="sell_place"/>
+            </div>
+            <div class="form-group">
+              <label for="sell_price">Prix de vente (en €)</label>
+              <input type="number" value="0" step=".01" id="sell_price" name="sell_price" />
+            </div>
+            <div class="form-group">
+              <label for="sell_date">Date de vente</label>
+              <input type="date" id="sell_date" name="sell_date"/>
+            </div>
+            <div class="form-group">
+              <label for="omb">Oh my brooch!</label>
+              <input type="text" id="omb" name="omb" />
+            </div>
+
+          </div>
+          <div class="form-collumn">
+            <div class="form-group">
+              <label for="ees">Ebay Etsy Sonia</label>
+              <input type="text" id="ees" name="ees" />
+            </div>
+            <div class="form-group">
+              <label for="eep">Prix Ebay Etsy</label>
+              <input type="text" id="eep" name="eep" />
+            </div>
+            <div class="form-group">
+              <label for="eed">Date ebay etsy</label>
+              <input type="date" id="eed" name="eed" />
+            </div>
+            <div class="form-group">
+              <label for="facture">Identifiant facture</label>
+              <input type="text" id="facture" name="facture"/>
+            </div>
+            
+          </div>
+
+        </div>
+      
+    </div>
+  </div>
+  </form>
+
 </div>
 
-    <script src='http://codepen.io/andytran/pen/vLmRVp.js'></script>
-    <script src="js/index.js"></script>
-    <script src="js/form.js"></script>
+<script src='http://codepen.io/andytran/pen/vLmRVp.js'></script>
+<script src="js/index.js"></script>
+<script src="js/form.js"></script>
 
 </body>
+
 </html>

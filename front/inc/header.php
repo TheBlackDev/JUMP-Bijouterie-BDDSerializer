@@ -6,12 +6,11 @@ if(session_status() == PHP_SESSION_NONE) {
 
 ?>
 
-<script
-			  src="https://code.jquery.com/jquery-2.2.4.min.js"
-			  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-			  crossorigin="anonymous"></script><script src="toastr/toastr.min.js"></script>
+
 <link href="toastr/toastr.css" rel="stylesheet"/>
 
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="toastr/toastr.min.js"></script>
 <script>
 
     toastr.options = {
@@ -44,9 +43,8 @@ if(session_status() == PHP_SESSION_NONE) {
                 return 'Erreur';
         }
     }
-
-
 </script>
+
 
 <?php if(isset($_SESSION['flash'])) : ?>
     <script>

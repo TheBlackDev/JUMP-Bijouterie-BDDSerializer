@@ -191,7 +191,7 @@ body {
   background: #4285F4;
   width: 100%;
   min-height: 100%;
-  padding: 60px calc(10% + 60px) 60px 60px;
+  padding: 65px calc(10% + 60px) 60px 60px;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   cursor: pointer;
@@ -243,18 +243,10 @@ body {
 }
 
 .pen-footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  display: block;
+  text-align: center;
   width: 600px;
-  margin: 20px auto 100px;
+  margin: 10% auto 0px;
 }
 .pen-footer a {
   color: #FFFFFF;

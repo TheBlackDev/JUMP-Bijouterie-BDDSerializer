@@ -41,6 +41,16 @@
 </div>
 
 
+<div class="pen-footer"
+style="
+  display: block;
+  text-align: center;
+  width: 600px;
+  margin: 10% auto 0px;
+">
+  <a href="https://github.com/andyhqtran/UI-Library/tree/master/Login%20Form" target="_blank">Powered by andyhqtran's template</a>
+</div>
+
   <script src='http://codepen.io/andytran/pen/vLmRVp.js'></script>
   <script src="js/index.js"></script>
 
