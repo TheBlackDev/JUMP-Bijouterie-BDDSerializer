@@ -7,7 +7,7 @@
     require './inc/header.php';
     require './login_front.php';
 
-    $redirection = "./insert.php";
+    $redirection = "./search.php";
 
     $errors = array();
 
@@ -19,29 +19,33 @@
 
     if(!empty($_POST)) {
         if(empty($_POST['username'])){
-            $errors['username'] = 'Veuillez renseigner votre nom d\'utilisateur';
+            $_SESSION['flash']['error'] = "Veuillez renseigner votre nom d'utilisateur.";
+            exit();
         }
 
         if(empty($_POST['password'])){
-            $errors['password'] = 'Veuillez renseigner votre nom d\'utilisateur';
+            $_SESSION['flash']['error'] = "Veuillez renseigner votre mot de passe.";
+            exit();
         }
 
         if(empty($errors)) {
             $req = $pdo->prepare('SELECT * FROM users WHERE username = ?');
             $req->execute([$_POST['username']]);
             $user = $req->fetch();
-
-            if(password_verify($_POST['password'], $user->hash)) {
-                $_SESSION['auth'] = $user;
-                $_SESSION['flash']['success'] = "Bienvenue " . $user->username . " !";
-                header('Location: ' . $redirection);
-                exit();
+            
+            if($user != "") {
+                if(password_verify($_POST['password'], $user->hash)) {
+                    $_SESSION['auth'] = $user;
+                    $_SESSION['flash']['success'] = "Bienvenue " . $user->username . " !";
+                    header('Location: ' . $redirection);
+                    exit();
+                }
             } else {
-                $_SESSION['flash']['danger'] = "Identifiant ou mot de passe incorrect.";
+                $_SESSION['flash']['error'] = "Identifiant ou mot de passe incorrect.";
+                exit();
             }
         }
 
-        if(!empty($errors)){
-            debug($errors);
-        }
+        echo('Erreur Interne');
+        $_SESSION['flash']['error'] = "Erreur interne...";
     }

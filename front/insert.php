@@ -3,7 +3,7 @@
 require "./inc/header.php";
 
 if(!isset($_SESSION['auth'])){
-    $_SESSION['flash']['danger'] = "Vous devez être connecté pour accéder à cette page";
+    $_SESSION['flash']['warning'] = "Vous devez être connecté pour accéder à cette page";
     header('Location: ./login.php');
     exit();
 }

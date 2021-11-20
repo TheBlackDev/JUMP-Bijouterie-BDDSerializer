@@ -45,7 +45,10 @@
             </div>
             <div class="form-group">
               <label for="seller">Vendeur</label>
-              <input type="text" id="seller" name="seller" required="required"/>
+              <input type="text" id="seller" name="seller" required="required" list="seller_list"/>
+              <datalist id="seller_list">
+                <?php require("./inc/seller_options.php") ?>
+              </datalist>
             </div>
           </div>
           <div class="form-collumn">
@@ -73,11 +76,17 @@
             </div>
             <div class="form-group">
               <label for="periode">Période</label>
-              <input type="text" id="periode" name="periode" required="required"/>
+              <input type="text" id="periode" name="periode" required="required" list="period_list"/>
+              <datalist id="period_list">
+                <?php require("./inc/period_options.php") ?>
+              </datalist>
             </div>
             <div class="form-group">
               <label for="buy_price">Marque</label>
-              <input type="text" id="brand" name="brand" required="required"/>
+              <input type="text" id="brand" name="brand" required="required" list="brand_list"/>
+              <datalist id="brand_list">
+                <?php require("./inc/brand_options.php") ?>
+              </datalist>
             </div>
             
           </div>
@@ -130,8 +139,16 @@
             <input type="checkbox" id="sold" name="sold"/>
           </div>
         </div>
-        <div class="form-group submit">
-            <button type="submit">Envoyer</button>
+        <div id="footer-line">
+            <div class="link_container">
+              <a href="./search.php" class="linkk">Rechercher un produit</a>
+            </div>
+            <div class="form-group submit">
+              <button type="submit">Ajouter</button>
+            </div>            
+            <div class="link_container">
+              <a href="./logout.php" class="linkk">Déconnexion</a>
+            </div>
         </div>
     </div>
   </div>
@@ -196,6 +213,17 @@
 <script src='http://codepen.io/andytran/pen/vLmRVp.js'></script>
 <script src="js/index.js"></script>
 <script src="js/form.js"></script>
+
+<script>
+
+for (let input of document.querySelectorAll('input[type="text"]')) {
+    input.addEventListener("change", function(event) {
+        let newValue = event.target.value;
+        event.target.value = newValue.toLowerCase();
+    });
+}
+
+</script>
 
 </body>
 
