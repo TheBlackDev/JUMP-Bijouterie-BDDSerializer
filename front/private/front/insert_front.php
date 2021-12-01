@@ -47,7 +47,7 @@
               <label for="seller">Vendeur</label>
               <input type="text" id="seller" name="seller" required="required" list="seller_list"/>
               <datalist id="seller_list">
-                <?php require("./inc/seller_options.php") ?>
+                <?php require("private/front/inc/seller_options.php") ?>
               </datalist>
             </div>
           </div>
@@ -78,14 +78,14 @@
               <label for="periode">Période</label>
               <input type="text" id="periode" name="periode" required="required" list="period_list"/>
               <datalist id="period_list">
-                <?php require("./inc/period_options.php") ?>
+                <?php require("private/front/inc/period_options.php") ?>
               </datalist>
             </div>
             <div class="form-group">
               <label for="buy_price">Marque</label>
               <input type="text" id="brand" name="brand" required="required" list="brand_list"/>
               <datalist id="brand_list">
-                <?php require("./inc/brand_options.php") ?>
+                <?php require("private/front/inc/brand_options.php") ?>
               </datalist>
             </div>
             
@@ -141,13 +141,13 @@
         </div>
         <div id="footer-line">
             <div class="link_container">
-              <a href="./search.php" class="linkk">Rechercher un produit</a>
+              <a href="search.php" class="linkk">Rechercher un produit</a>
             </div>
             <div class="form-group submit">
               <button type="submit">Ajouter</button>
             </div>            
             <div class="link_container">
-              <a href="./logout.php" class="linkk">Déconnexion</a>
+              <a href="logout.php" class="linkk">Déconnexion</a>
             </div>
         </div>
     </div>

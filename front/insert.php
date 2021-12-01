@@ -1,14 +1,14 @@
 <?php 
 
-require "./inc/header.php";
+require "private/front/inc/header.php";
 
 if(!isset($_SESSION['auth'])){
     $_SESSION['flash']['warning'] = "Vous devez être connecté pour accéder à cette page";
-    header('Location: ./login.php');
+    header('Location: login.php');
     exit();
 }
 
-require_once "./inc/db.php";
+require_once "private/front/inc/db.php";
 
 if(!empty($_POST)){
 
@@ -64,4 +64,4 @@ if(!empty($_POST)){
 
 }
 
-require './insert_front.php';
+require 'private/front/insert_front.php';

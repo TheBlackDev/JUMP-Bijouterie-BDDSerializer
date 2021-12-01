@@ -1,13 +1,13 @@
 <?php
 
 
-    require_once './inc/db.php';
-    require_once './inc/functions.php';
+    require_once 'private/front/inc/db.php';
+    require_once 'private/front/inc/functions.php';
 
-    require './inc/header.php';
-    require './login_front.php';
+    require 'private/front/inc/header.php';
+    require 'private/front/login_front.php';
 
-    $redirection = "./search.php";
+    $redirection = "search.php";
 
     $errors = array();
 

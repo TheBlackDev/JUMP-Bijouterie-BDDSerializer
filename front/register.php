@@ -1,9 +1,9 @@
 <?php
 
-    require_once './inc/db.php';
-    require_once './inc/functions.php';
+    require_once 'private/front/inc/db.php';
+    require_once 'private/front/inc/functions.php';
 
-    require './register_front.php';
+    require 'private/front/register_front.php';
 
     $errors = array();
 

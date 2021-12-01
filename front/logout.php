@@ -1,5 +1,5 @@
 <?php
-    require './inc/header.php';
+    require 'private/front/inc/header.php';
     unset($_SESSION['auth']);    
     $_SESSION['flash']['success'] = 'Vous êtes maintenant déconnecté';
-    header('Location: ./login.php');
+    header('Location: login.php');

@@ -1,32 +1,22 @@
 <?php 
 
-require "./inc/header.php";
+require "private/front/inc/header.php";
 
 if(!isset($_SESSION['auth'])){
     $_SESSION['flash']['warning'] = "Vous devez être connecté pour accéder à cette page";
-    header('Location: ./login.php');
+    header('Location: login.php');
     exit();
 }
 
+require_once "private/front/inc/functions.php";
+require_once "private/front/inc/db.php";
 
 
-require_once "./inc/functions.php";
-require_once "./inc/db.php";
+require "private/front/inc/header.php";
+
+require "private/front/search_front.php";
 
 
-require "./inc/header.php";
-
-require "./search_front.php";
-
-
-if(!empty($_POST)) {
+if(!empty($_GET)) {
     
-    $_SESSION['flash']['error'] = $_POST;
-    header('Location: ./search.php');
-    exit();
-
-    echo('Erreur Interne');
-    $_SESSION['flash']['error'] = "Erreur interne...";
 }
-
-# TODO: MySQL request to get the products

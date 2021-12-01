@@ -1,5 +1,5 @@
 <?php
-    require_once("db.php");
+    require_once("private/front/inc/db.php");
     $req = $pdo->prepare("SELECT DISTINCT periode FROM inventory");
     $req -> execute();
     $res = $req -> fetchAll(); 

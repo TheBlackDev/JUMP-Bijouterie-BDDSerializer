@@ -22,7 +22,7 @@
 
 <div class="form">
   <div class="form-toggle"></div>
-  <form id="formid" method="post">
+  <form id="formid" method="get" action="results.php">
   <div class="form-panel one">
     <div class="form-header">
       <h1>Recherche d'un produit</h1>
@@ -66,15 +66,15 @@
               <label for="seller">Vendeur</label>
               <input class="toCheck" type="text" id="seller" name="seller" list="seller_list"/>
               <datalist id="seller_list">
-                <?php require("./inc/seller_options.php") ?>
+                <?php require("private/front/inc/seller_options.php") ?>
               </datalist>
             </div>
           </div>
           <div class="form-collumn">
             <div class="form-group">
-              <label for="type">Type</label>
-              <input type="text" class="toCheck" list="type-list" id="type" name="type"  placeholder="TODO"/>
-              <datalist id="type-list">
+              <label for="type1">Type</label>
+              <input type="text" class="toCheck" list="type1-list" id="type1" name="type1"  placeholder="TODO"/>
+              <datalist id="type1-list">
                 <option value="Bague">
                 <option value="BO">
                 <option value="Colier">
@@ -97,14 +97,14 @@
               <label for="periode">Période</label>
               <input type="text" class="toCheck" id="periode" name="periode" list="period_list"/>
               <datalist id="period_list">
-                <?php require("./inc/period_options.php") ?>
+                <?php require("private/front/inc/period_options.php") ?>
               </datalist>
             </div>
             <div class="form-group">
               <label for="buy_price">Marque</label>
               <input type="text" id="brand" class="toCheck" name="brand"  list="brand_list"/>
               <datalist id="brand_list">
-                <?php require("./inc/brand_options.php") ?>
+                <?php require("private/front/inc/brand_options.php") ?>
               </datalist>
 
             </div>
@@ -169,14 +169,14 @@
 
         <div id="bottom-line">
             <div class="link_container">
-              <a href="./insert.php" class="linkk">Ajouter un produit</a>
+              <a href="insert.php" class="linkk">Ajouter un produit</a>
             </div>
             <div class="form-group submit">
-              <button type="submit">Rechercher</button>
+              <button type="submit" target="_self" >Rechercher</button>
             </div>
             
             <div class="link_container">
-              <a href="./logout.php" class="linkk">Déconnexion</a>
+              <a href="logout.php" class="linkk">Déconnexion</a>
             </div>
         </div>
 
