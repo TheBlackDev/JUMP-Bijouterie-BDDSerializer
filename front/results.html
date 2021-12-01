@@ -12,7 +12,27 @@
 
 <body>
  
-<div id="background"></div>  
+<div id="background"></div>
+
+<nav>
+  <div class="returnWrapper">
+    <div class="returnToSearch">
+      <a class="returnLink" href="#mettrelelienduGETversSearch.php"><i class="material-icons">arrow_back</i>  Modifier la recherche</a>
+    </div>
+  </div>
+
+  <div class="resultTitle">
+    <h1>Résultats de recherche</h1>
+  </div>
+
+  <div class="returnWrapper">
+    <div class="returnToSearch">
+      <a class="returnLink" href="#mettrelelienduGETversSearch.php"><i class="material-icons">arrow_back</i>  Nouvelle recherche</a>
+    </div>
+  </div>
+
+  
+</nav>
 
 <div class="tile_wrapper">  
   <div class="tile_grid">
@@ -100,6 +120,27 @@
 
 
   <script>
+
+    function getHeight(windowHeight) {
+      if(windowHeight < 100) {
+        return 100;
+      } else if (windowHeight > 180) {
+        return 180;
+      } else {
+        return windowHeight;
+      }
+    }
+
+    window.onload = function(){
+      console.log(parseInt(window.innerHeight*0.1));
+      document.getElementsByTagName('nav')[0].setAttribute('style', 'height:' + getHeight(parseInt(window.innerHeight*0.08)) + 'px');
+    };
+
+    window.onresize = function(){
+      console.log(parseInt(window.innerHeight*0.1));
+      document.getElementsByTagName('nav')[0].setAttribute('style', 'height:' + getHeight(parseInt(window.innerHeight*0.08)) + 'px');
+    };
+    
 
     Array.from(document.getElementsByClassName('carousel')).forEach(function(element) {
       element.scrollTo(0, 0);
