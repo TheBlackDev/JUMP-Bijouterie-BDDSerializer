@@ -1,0 +1,80 @@
+Date : 2021-12-06 14:07:57
+Directory : c:\xampp\htdocs
+Total : 40 files,  3309 codes, 149 comments, 407 blanks, all 3865 lines
+
+Languages
++-------------+------------+------------+------------+------------+------------+
+| language    | files      | code       | comment    | blank      | total      |
++-------------+------------+------------+------------+------------+------------+
+| CSS         |          7 |      1,572 |          9 |        108 |      1,689 |
+| PHP         |         18 |        968 |        119 |        184 |      1,271 |
+| SCSS        |          1 |        278 |         12 |         46 |        336 |
+| Django HTML |          3 |        175 |          0 |         30 |        205 |
+| JavaScript  |          6 |        169 |          9 |         26 |        204 |
+| Pug         |          2 |        136 |          0 |          3 |        139 |
+| Django txt  |          2 |         10 |          0 |         10 |         20 |
+| XML         |          1 |          1 |          0 |          0 |          1 |
++-------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                 | files      | code       | comment    | blank      | total      |
++------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                    |         40 |      3,309 |        149 |        407 |      3,865 |
+| css                                                  |          5 |      1,348 |          4 |        107 |      1,459 |
+| deprecated                                           |          3 |        160 |          0 |          5 |        165 |
+| js                                                   |          5 |        168 |          8 |         25 |        201 |
+| private                                              |         11 |        684 |          0 |        112 |        796 |
+| private\front                                        |         11 |        684 |          0 |        112 |        796 |
+| private\front\inc                                    |          7 |        103 |          0 |         14 |        117 |
+| public                                               |          1 |          1 |          0 |          0 |          1 |
+| scss                                                 |          1 |        278 |         12 |         46 |        336 |
+| toastr                                               |          3 |        225 |          6 |          2 |        233 |
++------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------+-------------+------------+------------+------------+------------+
+| filename                                             | language    | code       | comment    | blank      | total      |
++------------------------------------------------------+-------------+------------+------------+------------+------------+
+| c:\xampp\htdocs\README.txt                           | Django txt  |          4 |          0 |          3 |          7 |
+| c:\xampp\htdocs\css\style-form-search.css            | CSS         |        393 |          0 |         22 |        415 |
+| c:\xampp\htdocs\css\style-form.css                   | CSS         |        493 |          4 |         44 |        541 |
+| c:\xampp\htdocs\css\style.css                        | CSS         |        262 |          0 |          6 |        268 |
+| c:\xampp\htdocs\css\style_results.css                | CSS         |        177 |          0 |         33 |        210 |
+| c:\xampp\htdocs\css\videorequest.css                 | CSS         |         23 |          0 |          2 |         25 |
+| c:\xampp\htdocs\deprecated\form.html                 | Django HTML |         24 |          0 |          2 |         26 |
+| c:\xampp\htdocs\deprecated\form.pug                  | Pug         |         69 |          0 |          3 |         72 |
+| c:\xampp\htdocs\deprecated\index.pug                 | Pug         |         67 |          0 |          0 |         67 |
+| c:\xampp\htdocs\form.html                            | Django HTML |         24 |          0 |          2 |         26 |
+| c:\xampp\htdocs\insert.php                           | PHP         |        114 |          0 |         27 |        141 |
+| c:\xampp\htdocs\js\check_search.js                   | JavaScript  |         19 |          0 |          4 |         23 |
+| c:\xampp\htdocs\js\form.js                           | JavaScript  |         42 |          8 |         12 |         62 |
+| c:\xampp\htdocs\js\index.js                          | JavaScript  |         22 |          0 |          3 |         25 |
+| c:\xampp\htdocs\js\insert_autofill.js                | JavaScript  |         72 |          0 |          4 |         76 |
+| c:\xampp\htdocs\js\results.js                        | JavaScript  |         13 |          0 |          2 |         15 |
+| c:\xampp\htdocs\license.txt                          | Django txt  |          6 |          0 |          7 |         13 |
+| c:\xampp\htdocs\login.php                            | PHP         |         40 |          0 |         12 |         52 |
+| c:\xampp\htdocs\logout.php                           | PHP         |          6 |          0 |          0 |          6 |
+| c:\xampp\htdocs\private\front\inc\brand_options.php  | PHP         |         11 |          0 |          0 |         11 |
+| c:\xampp\htdocs\private\front\inc\db.php             | PHP         |          4 |          0 |          2 |          6 |
+| c:\xampp\htdocs\private\front\inc\footer.php         | PHP         |          9 |          0 |          2 |         11 |
+| c:\xampp\htdocs\private\front\inc\functions.php      | PHP         |          6 |          0 |          1 |          7 |
+| c:\xampp\htdocs\private\front\inc\header.php         | PHP         |         51 |          0 |          9 |         60 |
+| c:\xampp\htdocs\private\front\inc\period_options.php | PHP         |         11 |          0 |          0 |         11 |
+| c:\xampp\htdocs\private\front\inc\seller_options.php | PHP         |         11 |          0 |          0 |         11 |
+| c:\xampp\htdocs\private\front\insert_front.php       | PHP         |        247 |          0 |         36 |        283 |
+| c:\xampp\htdocs\private\front\login_front.php        | PHP         |         47 |          0 |         12 |         59 |
+| c:\xampp\htdocs\private\front\register_front.php     | PHP         |         70 |          0 |         12 |         82 |
+| c:\xampp\htdocs\private\front\search_front.php       | PHP         |        217 |          0 |         38 |        255 |
+| c:\xampp\htdocs\public\play_button.svg               | XML         |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\register.php                         | PHP         |         17 |          0 |          4 |         21 |
+| c:\xampp\htdocs\removeimage.php                      | PHP         |         41 |          0 |          8 |         49 |
+| c:\xampp\htdocs\results.html                         | Django HTML |        127 |          0 |         26 |        153 |
+| c:\xampp\htdocs\results.php                          | PHP         |         55 |        112 |         14 |        181 |
+| c:\xampp\htdocs\scss\style.scss                      | SCSS        |        278 |         12 |         46 |        336 |
+| c:\xampp\htdocs\search.php                           | PHP         |         11 |          7 |          7 |         25 |
+| c:\xampp\htdocs\toastr\toastr.css                    | CSS         |        223 |          5 |          1 |        229 |
+| c:\xampp\htdocs\toastr\toastr.min.css                | CSS         |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\toastr\toastr.min.js                 | JavaScript  |          1 |          1 |          1 |          3 |
+| Total                                                |             |      3,309 |        149 |        407 |      3,865 |
++------------------------------------------------------+-------------+------------+------------+------------+------------+

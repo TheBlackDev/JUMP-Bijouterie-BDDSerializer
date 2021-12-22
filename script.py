@@ -12,10 +12,10 @@ files = os.listdir(cwd)  # Get all the files in that directory
 #print("Files in %r: %s" % (cwd, files))
 
 
-df = pd.ExcelFile('extrait_imageless.xlsx').parse('Feuil1');
-a = df.head(1)["Lot"][0]
+df = pd.ExcelFile('BDDwoimage.xlsx').parse('f1');
+a = df.head()
+print(df)
 
-m = imgg.imread('./images/'+str(a)+".jpg")
-
-plt.imshow(m)
-plt.show()
+#m = imgg.imread('./images/'+str(a)+".jpg")
+#plt.imshow(m)
+#plt.show()

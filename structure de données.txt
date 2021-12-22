@@ -1,0 +1,32 @@
+DATE d_achat
+VARCHAR(255) seller
+VARCHAR(8) lot
+TEXT(5000) description
+INT() buy_price (on multiplie par 100)
+BOOLEAN sold
+VARCHAR(80) place
+INT() consigned_price
+DATE consigned_date
+VARCHAR(30) eesonia
+INT() eeprice
+DATE eedate
+INT() ombprice
+VARCHAR(20) bill
+VARCHAR(20) type
+VARCHAR(20) type2
+VARCHAR(30) period
+VARCHAR(255) metal
+VARCHAR(30) brand
+VARCHAR(255) stone
+
+
+
+
+
+
+Question sur le LOT 628 à 2 endroits en même temps ? Idem 978 Idem 2138
+Problème de prix confié lot 2397
+
+Problème Prix Ebay Etsy double sur le 2344A
+
+

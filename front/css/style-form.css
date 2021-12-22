@@ -218,7 +218,7 @@ body {
 }
 
 input#sold {
-  margin-top: -20px;
+  /*margin-top: -20px;*/
   scale: 0.6;
 }
 
@@ -231,7 +231,7 @@ input#sold {
 .two .form-group input:focus {
   color: #FFFFFF;
 }
-.form-group button {
+button {
   outline: none;
   background: #4285F4;
   width: 100%;
@@ -398,3 +398,143 @@ font-family: roboto;
   grid-template-columns: 1fr 4fr 1fr;
   grid-gap: 20px;
 }
+
+.mask {
+  display: none;
+  opacity: 0;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  background: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mask.temp {
+  display: block;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 0.4s;
+}
+
+.mask.active {
+  display: block;
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 0.4s;
+}
+
+.form-attached-files {
+  position: fixed;
+  width: 70%;
+  height: 80%;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  top: 10%;
+  left: 15%;
+  padding: 2%;
+}
+
+.form-attached-files h1 {
+  text-align: center;
+}
+
+.addfiles {
+  height: 65%;
+  margin-bottom: 2%;
+}
+
+.out_buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 3%;
+}
+
+button#close_media {
+  background-color: #494949;
+}
+
+button#reset_media {
+  background-color: #e74c3c;
+}
+
+button#save_media {
+  background-color: #27ae60;
+}
+
+/**#file::-webkit-file-upload-button {
+  visibility: hidden;
+}**/
+
+#file {
+  outline: none;
+  background: #4285F4;
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  padding: 12px 20px;
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  line-height: inherit;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.fileinputcontainer {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-gap: 3%;
+  margin-bottom: 1%;
+}
+
+
+
+
+#uploadedFileVis {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  text-align: center;
+  align-items: start;
+}
+
+.uploaded_img_li {
+  display: inline-block; 
+  height: 95%;
+  margin: 0% 1.5%;
+  width: 30%;
+  text-align: center;
+}
+
+.image_wrapper {
+  width: 100%;
+  height: 80%;
+  text-align: center;
+  align-items: middle;
+  display: block;
+}
+
+.uploaded_image {
+  max-height: 80%; 
+  max-width: 100%;
+  display: block;
+}
+
+.remove_uploaded_img {
+  height: 15%;
+  margin-top: 3%;
+  background-color: #e74c3c;
+  display: inline-block;
+  width: 100%;
+}
+

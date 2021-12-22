@@ -6,38 +6,88 @@
   <title>Insertion d'un nouveau produit</title>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-
   <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons'>
+  <link rel="stylesheet" href="css/style-form.css">
 
-      <link rel="stylesheet" href="css/style-form.css">
-
-
-  
-  
+  <script src="js/form.js"></script>
+ 
 </head>
 
 <body>
   
 <!-- Form-->
 
+<div id="mediamask" class="mask">
+  <div id="media" class="form-attached-files">
+    <div class="form-header">
+      <h1>Ajout de médias</h1>
+    </div>
+    
+    <form method="post" enctype="multipart/form-data">
+      <div class="addfiles">
+        <ul id="uploadedFileVis">
+          <?php 
+            if(!empty($ids)){
+              foreach ($ids as $id) {
+                echo '<li class="uploaded_img_li">
+                        <div class="img_wrapper"><img class="uploaded_image" src="private/media/'.$id.'" alt="default.jpg"></div>
+                        <br>
+                        <button class="remove_uploaded_img" image_id="'.$id.'" type="button" onclick="removeimage(this)">Supprimer</button>
+                      </li>';
+              }
+            } else {
+              echo '<li class="uploaded_img_li">
+                      <img class="uploaded_image" src="public/ressources/no_image_available.png" alt="default.jpg">
+                    </li>';
+            }
+          ?>
+        </ul>
+      </div>        
+
+      <div class="fileinputcontainer">
+        <div></div>
+        <div>        
+            <label class="file_label">
+            <input type="file" name="file[]" class="file_input" id="file" multiple required="required">
+          </label>
+        </div>
+
+      </div>
+
+      <div class="out_buttons">
+        <button type="button" value="Cancel" id="close_media" onclick="cancelmediaadd()">Annuler</button>
+        <button type="button" value="Réinitialiser la sélection" id="reset_media" onclick="resetmediaadd()">Réinitialiser</button>
+        <button type="submit" value="Upload" id="save_media">Ajouter</button>        
+      </div>
+      
+    </form>
+    
+    
+
+  </div>
+</div>
+
+
 <div class="form">
   <div class="form-toggle"></div>
   <form id="formid" method="post">
+
   <div class="form-panel one">
     <div class="form-header">
-      <h1>Insertion d'un nouveau produit</h1>
+      <h1 style="display: inline-block; margin-right: 30px;">Insertion d'un nouveau produit</h1> *CVD = Complétable Via la Description
     </div>
+    
     <div class="form-content">
       
         <div class="form-collumn-container">
           <div class="form-collumn">
             <div class="form-group">
               <label for="lot">Lot</label>
-              <input type="number" id="lot" name="lot" placeholder="Automatiquement précisé si non précisé"/>
+              <input type="number" id="lot" name="lot" placeholder="Automatiquement fixé si non précisé"/>
             </div>
             <div class="form-group">
               <label for="buy_price">Prix d'achat (en €)</label>
-              <input type="number" value="0" step=".01" id="buy_price" name="buy_price" required="required"/>
+              <input type="number" step=".01" id="buy_price" name="buy_price" required="required"/>
             </div>
             <div class="form-group">
               <label for="buy_date">Date d'achat</label>
@@ -53,24 +103,24 @@
           </div>
           <div class="form-collumn">
             <div class="form-group">
-              <label for="type">Type</label>
-              <input type="text" list="type-list" id="type" name="type" required="required" placeholder="TODO"/>
+              <label for="type">Type (CVD)</label>
+              <input class="autofill" type="text" list="type-list" id="type" name="type" required="required" placeholder="Complétable via la description"/>
               <datalist id="type-list">
-                <option value="Bague">
-                <option value="BO">
-                <option value="Colier">
-                <option value="Broche">
+                <option value="bague">
+                <option value="bo">
+                <option value="colier">
+                <option value="broche">
               </datalist>
               <!--Attention à compléter tous les types qui existent-->
             </div>
             <div class="form-group">
-              <label for="type2">Type 2</label>
-              <input type="text" list="type2-list" id="type2" name="type2" required="required" placeholder="TODO"/>
+              <label for="type2">Type 2 (CVD)</label>
+              <input class="autofill" type="text" list="type2-list" id="type2" name="type2" required="required" placeholder="Complétable via la description"/>
               <datalist id="type2-list">
-                <option value="Géométrique">
-                <option value="Noeud">
-                <option value="Créole">
-                <option value="Turbogaz">
+                <option value="géométrique">
+                <option value="noeud">
+                <option value="créole">
+                <option value="turbogaz">
               </datalist>
               <!--Attention à compléter tous les types qui existent-->
             </div>
@@ -93,8 +143,8 @@
           <div class="form-collumn">
 
             <div class="form-group">
-              <label for="metal">Métal</label>
-              <select id="metal" name="metal" required="required" multiple="multiple"/>
+              <label for="metal">Métal (CVD)</label>
+              <select class="autofill" id="metal" name="metal" required="required" multiple="multiple" placeholder="Complétable via la description">
                 <option value="os">Or spécial</option>
                 <option value="oj2">Or jaune 2</option>
                 <option value="og">Or gris</option>
@@ -106,12 +156,12 @@
               </select>
             </div>
             <div class="form-group">
-              <label for="weight">Poids Brut (en g.)</label>
-              <input type="number" value="0" step=".01" id="weight" name="weight" required="required"/>
+              <label for="weight">Poids Brut (en g.) (CVD)</label>
+              <input type="number" step=".01" id="weight" name="weight" required="required" placeholder="Complétable via la description"/>
             </div>
             <div class="form-group">
-              <label for="pierre">Pierre</label>
-              <select id="pierre" name="pierre" required="required" multiple="multiple"/>
+              <label for="pierre">Pierre (CVD)</label>
+              <select class="autofill" id="pierre" name="pierre" required="required" multiple="multiple" placeholder="Complétable via la description">
                 <option value="Diamant">Diamant</option>
                 <option value="Emeraude">Emeraude</option>
                 <option value="Saphir">Saphir</option>
@@ -123,8 +173,9 @@
             </div>
 
             <div class="form-group">
-              <label for="picture">Photo</label>
-              <input type="file" id="picture" name="picture" required="required"/>
+              <label for="open_media">Médias</label>
+              <button id="open_media" type="button" onclick="openmediaadd()">Ajouter des médias</button>
+              <!--<input type="file" id="picture" name="picture" disabled="disabled" placeholder="Clicker ici pour ajouter des images"/>-->
             </div>
           </div>
 
@@ -170,7 +221,7 @@
             </div>
             <div class="form-group">
               <label for="sell_price">Prix de vente (en €)</label>
-              <input type="number" value="0" step=".01" id="sell_price" name="sell_price" />
+              <input type="number" step=".01" id="sell_price" name="sell_price" />
             </div>
             <div class="form-group">
               <label for="sell_date">Date de vente</label>
@@ -210,20 +261,21 @@
 
 </div>
 
+<!-- LOADING JS -->
+
 <script src='http://codepen.io/andytran/pen/vLmRVp.js'></script>
 <script src="js/index.js"></script>
-<script src="js/form.js"></script>
-
 <script>
-
-for (let input of document.querySelectorAll('input[type="text"]')) {
-    input.addEventListener("change", function(event) {
-        let newValue = event.target.value;
-        event.target.value = newValue.toLowerCase();
-    });
-}
-
+  for (let input of document.querySelectorAll('input[type="text"]')) {
+      input.addEventListener("change", function(event) {
+          let newValue = event.target.value;
+          event.target.value = newValue.toLowerCase();
+      });
+  }
 </script>
+<script src="js/insert_autofill.js"></script>
+
+<!-- END LOADING JS -->
 
 </body>
 

@@ -16,7 +16,10 @@ require "private/front/inc/header.php";
 
 require "private/front/search_front.php";
 
-
+/*
 if(!empty($_GET)) {
-    
+    $dom = new DOMDocument();
+    $dom->loadHTMLFile('/private/front/inc/search_front.php');
+    $input_list = $dom->getElementsByTagName('input');
 }
+*/
