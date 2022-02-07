@@ -8,15 +8,17 @@ weight_input.addEventListener("change", function(event) {
     }
 });
 
-var price_input = document.getElementById("buy_price");
+try {
+    var price_input = document.getElementById("buy_price");
+    price_input.addEventListener("change", function(event) {
+        var new_price = event.target.value;
+        if(new_price < 0) {
+            alert("Merci d'entrer un prix positif.");
+            event.target.value = "";
+        }
+    });
+} catch {}
 
-price_input.addEventListener("change", function(event) {
-    var new_price = event.target.value;
-    if(new_price < 0) {
-        alert("Merci d'entrer un prix positif.");
-        event.target.value = "";
-    }
-});
 
 var file_input = document.getElementById("picture");
 const extension = ["jpg", "jpeg", "png", "gif"];
@@ -55,6 +57,11 @@ function cancelmediaadd() {
 function removeimage(buttonClicked) {
     let id = buttonClicked.getAttribute("image_id");
     document.location.href = "removeimage.php?id=" + id;
+}
+
+function removeimageModif(buttonClicked, lot) {
+    let id = buttonClicked.getAttribute("image_id");
+    document.location.href = "removeimageModif.php?id=" + id + "&lot=" + lot;
 }
 
 function resetmediaadd() {

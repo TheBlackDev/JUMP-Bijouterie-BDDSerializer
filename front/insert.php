@@ -27,6 +27,7 @@ if(!isset($_SESSION['ids'])){
 
 $ids = $_SESSION['ids'];
 
+
 require_once "private/front/inc/db.php";
 
 if(!empty($_POST)){
@@ -42,51 +43,103 @@ if(!empty($_POST)){
 
   if(!empty($_POST['lot'])) {
     $lot = $_POST['lot'];
-    $result = $pdo->prepare("SELECT COUNT() FROM inventory WHERE lot = ' $lot '");
+    $result = $pdo->prepare("SELECT lot FROM inventory WHERE lot = '$lot'");
     try {
       $result->execute();
     } catch (PDOException $e) {
-      echo $e->getMessage();
-      return "MYSQL ERROR";
-      exit;
+      $_SESSION['flash']['error'] = "Erreur lors de la requête : ".$e->getMessage();
+      header("Location: insert.php");
+      exit();
     }
-    
-    $num = $result->fetch();
-    if($num[0] > 0) {
-      $errors['lot'] = "Ce lot existe déjà, si vous ne voulez pas imposer le numéro de lot, laisser la case vide.";
+    $num = count($result->fetchAll());
+    if($num > 0) {
+      $_SESSION['flash']['error'] = "Le lot numéro ".$_POST['lot']." existe déjà. Si vous ne savez pas quels numéro de lot sont libres, vous pouvez laisser celui proposer par défaut.";
+      header("Location: insert.php");
+      exit();
     }
-    return $errors;
   }
 
-  $request = $pdo->prepare("INSERT INTO inventory (lot, name, quantity, price, date_expiration, date_creation) VALUES (:lot, :name, :quantity, :price, :date_expiration, :date_creation)");
+  function parsePostParameter($parameter) {
+    if(!empty($_POST[$parameter])) {
+      return $_POST[$parameter];
+    } else {
+      return NULL;
+    }
+  }
 
-  $lot = $_POST['lot'];
-  $buy_price = $_POST['buy_price'];
-  $buy_date = $_POST['buy_date'];
-  $seller = $_POST['seller'];
-  $type1 = $_POST['type'];
-  $type2 = $_POST['type2'];
-  $periode = $_POST['periode'];
-  $brand = $_POST['brand'];
-  $metal = $_POST['metal'];
-  $b_weight = $_POST['weight'];
-  $pierre = $_POST['pierre'];
+  $lot = parsePostParameter('lot'); 
+  $buy_date = parsePostParameter('buy_date');
+  $seller = parsePostParameter('seller');
+  $description = parsePostParameter('description');
+  $buy_price = parsePostParameter('buy_price');
+  $sold = parsePostParameter('sold');
+  $place = parsePostParameter('place');
+  $sell_price = parsePostParameter('sell_price');
+  $sell_date = parsePostParameter('sell_date');
+  $eesonia = parsePostParameter('ees');
+  $eeprice = parsePostParameter('eep');
+  $eedate = parsePostParameter('eed');
+  $ombprice = parsePostParameter('omb');
+  $bill = parsePostParameter('bill');
+  $type = parsePostParameter('type');
+  $type2 = parsePostParameter('type2');
+  $period = parsePostParameter('periode');
 
-  $request = $pdo->prepare("INSERT INTO inventory (lot, buy_price, buy_date, seller, type1, type2, periode, brand, metal, b_weight, pierre) 
-  VALUES ($lot, $buy_price, $buy_date, $seller, $type1, $type2, $periode, $brand, $metal, $b_weight, $pierre)");
+
+  $metal = "";
+  if(empty($_POST['metal'])) {
+    $metal = NULL;
+  } else {
+    foreach($_POST['metal'] as $met) {
+      $metal .= $met . "-";
+    }
+    $metal = substr($metal, 0, -1);
+  }
   
-  try {
-    $request->execute();
-  } catch (PDOException $e) {
-    echo $e->getMessage();
-    return "MYSQL ERROR";
-    exit;
+  $brand = parsePostParameter('brand');
+
+  $stone = "";
+  if(empty($_POST['pierre'])) {
+    $stone = NULL;
+  } else {
+    foreach($_POST['pierre'] as $sto) {
+      $stone = $stone . $sto . "-";
+    }
+    $stone = substr($stone, 0, -1);
+  }
+  
+  $weight = parsePostParameter('weight');
+
+  $media = "";
+  if(empty($_SESSION['ids'])) {
+    $media = NULL;
+  } else {
+    foreach($_SESSION['ids'] as $med) {
+      $media .= $med . ",";
+    }
+    $media = substr($media, 0, -1);
   }
 
+  
+  
+  $pre_req = "INSERT INTO inventory VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" ;
+  $request = $pdo->prepare($pre_req);	
+   
+  try {
+    $request -> execute(array($lot, $buy_date, $seller, $description, $buy_price*100, $sold, $place, $sell_price*100, $sell_date, $eesonia, $eeprice*100, $eedate, $ombprice*100, $bill, $type, $type2, $period, $metal, $brand, $stone, $weight, $media));
+  } catch (PDOException $e) {
+    $_SESSION['flash']['error'] = "Erreur lors de la requête : ".$e->getMessage();
+    $_SESSION['flash']['info'] = $pre_req;
+    header("Location: insert.php");
+    exit();
+  }
+
+  $_SESSION['flash']['success'] = "Le lot ".$lot." a bien été ajouté.";
+  header("Location: insert.php");
+  exit();
 }
 
 if(!empty($_FILES)){
-  	
   $files = $_FILES['file'];
   if(isset($_FILES["file"]) && isArrayComposedOf(0, $files['error'])) {	
 
@@ -114,10 +167,9 @@ if(!empty($_FILES)){
       move_uploaded_file($file_tmp_name, $file_destination);
       array_push($ids, $file_name);
     } 
-
+    unset($_SESSION['ids']);
     $_SESSION['ids'] = $ids;
     $_SESSION['flash']['success'] = "Les fichiers ont bien été uploadés.";
-
     header('Location: insert.php');
     exit();    
   } else {

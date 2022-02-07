@@ -18,6 +18,9 @@
     }
 
     if(!empty($_POST)) {
+
+        sleep(0.5);
+
         if(empty($_POST['username'])){
             $_SESSION['flash']['error'] = "Veuillez renseigner votre nom d'utilisateur.";
             exit();

@@ -1,3 +1,5 @@
+
+
 var description = document.getElementById('description');
 var toReplace = new Map();
 toReplace.set('é', 'e');
@@ -32,29 +34,38 @@ toReplace.set('ÿ', 'y');
 toReplace.set('à', 'a');
 
 
-function replaceVariant(str) {
-    console.log(toReplace);
+function replaceVariant(strr) {
     for (let [key, value] of toReplace.entries()) {
-        str = str.replaceAll(key, value);
+        strr = strr.replaceAll(key, value);
     }
-    return str;
+    return strr;
 }
+
 
 description.addEventListener("change", function(event) {
     let eventLC = replaceVariant(event.target.value.toLowerCase());
+    let maxLength = 0;
     console.log(eventLC);
     Array.from(document.getElementsByClassName('autofill')).forEach(function(element) {
         if(element.tagName == "INPUT") {
             let datalist = document.getElementById(element.getAttribute('list'));
+            maxLength = 0;
             Array.from(datalist.getElementsByTagName("option")).forEach(function(option) {
-                if(eventLC.includes(option.value)) {
-                    element.value = option.value;
+                if(option.value != "") {
+                    if(eventLC.includes(replaceVariant(option.value.toLowerCase()))) {
+                        if(option.value.length > maxLength) {
+                            console.log(option.value);
+                            maxLength = option.value.length;
+                            element.value = option.value;
+                        }
+                    }
                 }
             });
+
         }
         else if(element.tagName == "SELECT") {
             Array.from(element.options).forEach(function(option) {
-                if(eventLC.includes(option.innerText.toLowerCase())) {
+                if(eventLC.includes(replaceVariant(option.innerText.toLowerCase()))) {
                     option.setAttribute('selected', 'selected');
                 }
             });
@@ -63,6 +74,18 @@ description.addEventListener("change", function(event) {
     if(eventLC.includes(" g ")) {
         let splitted=eventLC.split(" ");
         let index = splitted.indexOf("g");
+        let newWeight = 0;
+        try {
+            newWeight = splitted[index-1];
+        } catch(e) {
+            console.error(e);
+            return;
+        }
+        document.getElementById('weight').value = parseInt(newWeight);            
+    }
+    else if(eventLC.includes(" g.")) {
+        let splitted=eventLC.split(" ");
+        let index = splitted.indexOf("g.");
         let newWeight = 0;
         try {
             newWeight = splitted[index-1];

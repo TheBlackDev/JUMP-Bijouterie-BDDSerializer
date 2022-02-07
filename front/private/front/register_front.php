@@ -20,7 +20,7 @@
   <div class="form-toggle"></div>
   <div class="form-panel one">
     <div class="form-header">
-      <h1>Identification</h1>
+      <h1>Enregistrer un nouvel utilisateur</h1>
     </div>
     <div class="form-content">
       <form method="post">

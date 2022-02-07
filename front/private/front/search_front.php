@@ -9,7 +9,7 @@
 
   <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons'>
 
-      <link rel="stylesheet" href="css/style-form-search.css">
+  <link rel="stylesheet" href="css/style-form-search.css">
 
 
   
@@ -25,137 +25,101 @@
   <form id="formid" method="get" action="results.php">
   <div class="form-panel one">
     <div class="form-header">
-      <h1>Recherche d'un produit</h1>
+      <h1 style="display: inline; margin-right: 50px;">Recherche d'un produit</h1>
+      <a style="  display: inline; margin-right: 50px; color: rgba(0,0,0,0.6);" href="search.php">Effacer la recherche</a>
+      <a style="  display: inline;  color: rgba(0,0,0,0.6); font-weight: bold;" href="results.php">Catalogue complet</a>
     </div>
     <div class="form-content">
       
         <div class="form-collumn-container">
           <div class="form-collumn">
-            <div class="range">
-                <div class="form-group">
-                    <label for="lot_min">Lot min</label>
-                    <input type="number" value="0" step=".01" id="lot_min" name="lot_min"/>
-                </div>
-                <div class="form-group">
-                    <label for="lot_max">Lot max</label>
-                    <input type="number" value="0" step=".01" id="lot_max" name="lot_max"/>
-                </div>
-            </div>
-            <div class="range">
-                <div class="form-group">
-                    <label for="buy_price_min">P. Achat min</label>
-                    <input type="number" value="0" step=".01" id="buy_price_min" name="buy_price_min"/>
-                </div>
-                <div class="form-group">
-                    <label for="buy_price_max">P. Achat max</label>
-                    <input type="number" value="0" step=".01" id="buy_price_max" name="buy_price_max"/>
-                </div>
-            </div>
-            <div class="range">
-                <div class="form-group">
-                    <label for="buy_date_min">D. Achat min</label>
-                    <input type="date" id="buy_date_min" name="buy_date_min"/>
-                </div>
-                <div class="form-group">
-                    <label for="buy_date_max">D. Achat max</label>
-                    <input type="date" id="buy_date_max" name="buy_date_max"/>
-                </div>
-            </div>
-            
             <div class="form-group">
-              <label for="seller">Vendeur</label>
-              <input class="toCheck" type="text" id="seller" name="seller" list="seller_list"/>
-              <datalist id="seller_list">
-                <?php require("private/front/inc/seller_options.php") ?>
-              </datalist>
+                <label for="lot_min">Lot</label>
+                <input type="number" <?php if(isset($_GET) && isset($_GET['lot']) && $_GET['lot'] != NULL) {echo('value="'.$_GET['lot'].'"');}?> step=".01" id="lot" name="lot"/>
             </div>
-          </div>
-          <div class="form-collumn">
             <div class="form-group">
               <label for="type1">Type</label>
-              <input type="text" class="toCheck" list="type1-list" id="type1" name="type1"  placeholder="TODO"/>
-              <datalist id="type1-list">
-                <option value="Bague">
-                <option value="BO">
-                <option value="Colier">
-                <option value="Broche">
-              </datalist>
-              <!--Attention à compléter tous les types qui existent-->
+              <input type="text" <?php if(isset($_GET) && isset($_GET['type1']) && $_GET['type1'] != NULL) {echo('value="'.$_GET['type1'].'"');}?> class="toCheck" list="type1-list" id="type1" name="type1"/>
             </div>
-            <div class="form-group">
-              <label for="type2">Type 2</label>
-              <input type="text" class="toCheck" list="type2-list" id="type2" name="type2"  placeholder="TODO"/>
-              <datalist id="type2-list">
-                <option value="Géométrique">
-                <option value="Noeud">
-                <option value="Créole">
-                <option value="Turbogaz">
-              </datalist>
-              <!--Attention à compléter tous les types qui existent-->
-            </div>
-            <div class="form-group">
-              <label for="periode">Période</label>
-              <input type="text" class="toCheck" id="periode" name="periode" list="period_list"/>
-              <datalist id="period_list">
-                <?php require("private/front/inc/period_options.php") ?>
-              </datalist>
-            </div>
-            <div class="form-group">
-              <label for="buy_price">Marque</label>
-              <input type="text" id="brand" class="toCheck" name="brand"  list="brand_list"/>
-              <datalist id="brand_list">
-                <?php require("private/front/inc/brand_options.php") ?>
-              </datalist>
 
+            <div class="form-group">
+              <label for="buy_price">Prix d'Achat Exact</label>
+              <input type="number" step=".01" id="buy_price" name="buy_price"/>
             </div>
-            
+
+            <div class="range">
+              <div class="form-group">
+                <label for="buy_price_min">Prix d'Achat min</label>
+                <input type="number" <?php if(isset($_GET) && isset($_GET['buy_price_min']) && $_GET['buy_price_min'] != NULL) {echo('value="'.$_GET['buy_price_min'].'"');}?> step=".01" id="buy_price_min" name="buy_price_min"/>
+              </div>
+              <div class="form-group">
+                <label for="buy_price_max">Prix d'Achat max</label>
+                <input type="number" <?php if(isset($_GET) && isset($_GET['buy_price_max']) && $_GET['buy_price_max'] != NULL) {echo('value="'.$_GET['buy_price_max'].'"');}?> step=".01" id="buy_price_max" name="buy_price_max"/>
+              </div>
+            </div>
+
+
+
           </div>
           <div class="form-collumn">
 
             <div class="form-group">
               <label for="metal">Métal</label>
-              <select id="metal" name="metal"  multiple="multiple">
-                <option value="os">Or spécial</option>
-                <option value="oj2">Or jaune 2</option>
-                <option value="og">Or gris</option>
-                <option value="or">Or rose</option>
-                <option value="o14">Or 14k</option>
-                <option value="pla">Platine</option>
-                <option value="ag">Argent</option>
-                <option value="aci">Acier</option>
+              <select id="metal" name="metal[]"  multiple="multiple">
+                <?php getMetals($pdo) ?>
               </select>
             </div>
-            <div class="range">
-                <div class="form-group">
-                    <label for="weight_min">Poids B. min</label>
-                    <input type="number" value="0" step=".01" id="weight_min" name="weight_min"/>
-                </div>
-                <div class="form-group">
-                    <label for="weight_max">Poids B. max</label>
-                    <input type="number" value="0" step=".01" id="weight_max" name="weight_max"/>
-                </div>
-            </div>
-            
+
             <div class="form-group">
               <label for="pierre">Pierre</label>
-              <select id="pierre" name="pierre"  multiple="multiple">
-                <option value="Diamant">Diamant</option>
-                <option value="Emeraude">Emeraude</option>
-                <option value="Saphir">Saphir</option>
-                <option value="Rubis">Rubis</option>
-                <option value="Aiguemarine">Aiguemarine</option>
-                <option value="Perle">Perle</option>
-                <option value="Autre pierre">Autre pierre</option>
+              <select id="pierre" name="pierre[]"  multiple="multiple">
+                <?php $stones = getStones($pdo) ?>
               </select>
             </div>
+
+            <div class="form-group">
+              <label for="brand">Marque</label>
+              <input type="text" <?php if(isset($_GET) && isset($_GET['brand']) && $_GET['brand'] != NULL) {echo('value="'.$_GET['brand'].'"');}?> id="brand" class="toCheck" name="brand"  list="brand_list"/>
+            </div>
+
+
+
+
+          </div>
+          <div class="form-collumn">
+
+            <div class="form-group">
+              <label for="type2">Confié à / Vendu à</label>
+              <input type="text" <?php if(isset($_GET) && isset($_GET['place']) && $_GET['place'] != NULL) {echo('value="'.$_GET['place'].'"');}?> class="toCheck" id="place" name="place"/>
+            </div>
+
+
             <div class="form-group">
               <label for="sold">Vendu</label>
-              <select id="sold" name="sold" multiple="multiple">
+              <select id="sold" name="sold">
                 <option value="">Indifférent</option>
-                <option value="yes">Vendu</option>
-                <option value="no">Non vendu</option>
+                <option value="1">Vendu</option>
+                <option value="0">Non vendu</option>
               </select>
             </div>
+
+            <div class="form-group">
+              <label for="sell_price">Prix de Vente Exact</label>
+              <input type="number" step=".01" id="sell_price" name="sell_price"/>
+            </div>
+
+            <div class="range">
+              <div class="form-group">
+                <label for="sell_price_min">Prix de Vente min</label>
+                <input type="number" <?php if(isset($_GET) && isset($_GET['sell_price_min']) && $_GET['sell_price_min'] != NULL) {echo('value="'.$_GET['sell_price_min'].'"');}?> step=".01" id="sell_price_min" name="sell_price_min"/>
+              </div>
+              <div class="form-group">
+                <label for="sell_price_max">Prix de Vente max</label>
+                <input type="number" <?php if(isset($_GET) && isset($_GET['sell_price_max']) && $_GET['sell_price_max'] != NULL) {echo('value="'.$_GET['sell_price_max'].'"');}?> step=".01" id="sell_price_max" name="sell_price_max"/>
+              </div>
+            </div>
+
+
           </div>
 
 
@@ -163,8 +127,8 @@
         </div>
 
         <div class="form-group">
-              <label for="description">Description (contient)</label>
-              <input type="text" id="description" name="description" required="required"/>
+          <label for="description">Description (contient)</label>
+          <input type="text" id="description" <?php if(isset($_GET) && isset($_GET['description']) && $_GET['description'] != NULL) {echo('value="'.$_GET['description'].'"');}?> name="description"/>
         </div>
 
         <div id="bottom-line">
@@ -186,59 +150,6 @@
     </div>
   </div>
 
-  <div class="form-panel two">
-    <div class="form-header">
-      <h1>Informations complémentaires (optionnelles)</h1>
-    </div>
-    <div class="form-content">
-        <div class="form-collumn-container-bis" style="
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-gap: 20px;
-        ">
-          <div class="form-collumn">
-            <div class="form-group">
-              <label for="sell_place">Lieu de la vente</label>
-              <input type="text" id="sell_place" name="sell_place"/>
-            </div>
-            <div class="form-group">
-              <label for="sell_price">Prix de vente (en €)</label>
-              <input type="number" value="0" step=".01" id="sell_price" name="sell_price" />
-            </div>
-            <div class="form-group">
-              <label for="sell_date">Date de vente</label>
-              <input type="date" id="sell_date" name="sell_date"/>
-            </div>
-            <div class="form-group">
-              <label for="omb">Oh my brooch!</label>
-              <input type="text" id="omb" name="omb" />
-            </div>
-
-          </div>
-          <div class="form-collumn">
-            <div class="form-group">
-              <label for="ees">Ebay Etsy Sonia</label>
-              <input type="text" id="ees" name="ees" />
-            </div>
-            <div class="form-group">
-              <label for="eep">Prix Ebay Etsy</label>
-              <input type="text" id="eep" name="eep" />
-            </div>
-            <div class="form-group">
-              <label for="eed">Date ebay etsy</label>
-              <input type="date" id="eed" name="eed" />
-            </div>
-            <div class="form-group">
-              <label for="facture">Identifiant facture</label>
-              <input type="text" id="facture" name="facture"/>
-            </div>
-            
-          </div>
-
-        </div>
-      
-    </div>
-  </div>
   </form>
 
 </div>
@@ -248,6 +159,27 @@
 <script src="js/form.js"></script>
 <script src="js/check_search.js"></script>
 
+<script>
+
+  function update_length() {
+    let sel_stone = document.getElementById("pierre");
+    let length = 20 + document.getElementsByClassName("stone_option")[0].offsetHeight * sel_stone.length;
+    sel_stone.style.setProperty('--pierre-hover-height', (length + "px"));
+  }
+
+  update_length();
+
+  document.getElementById("buy_price").addEventListener('change', function() {
+    document.getElementById("buy_price_min").value = this.value;
+    document.getElementById("buy_price_max").value = this.value;
+  });
+
+  document.getElementById("sell_price").addEventListener('change', function() {
+    document.getElementById("sell_price_min").value = this.value;
+    document.getElementById("sell_price_max").value = this.value;
+  });
+
+</script>
 
 </body>
 

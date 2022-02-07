@@ -1,5 +1,30 @@
 <!DOCTYPE html>
 
+<?php 
+
+$request = "SELECT lot FROM inventory";
+$req = $pdo->prepare($request);
+$req->execute();
+$results = $req->fetchAll();
+
+$max = 0;
+
+foreach($results as $key => $value) {
+  $numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  $p = 0;
+  while($p < strlen($value->lot)) {
+      if(in_array($value->lot[$p], $numbers)) {
+          $p++;
+      } else {
+          break;
+      }
+  }
+  $number = intval(substr($value->lot, 0, $p));
+  $max = max($max, $number);
+}
+
+?>
+
 <html>
 <head>
   <meta charset="UTF-8">
@@ -8,8 +33,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons'>
   <link rel="stylesheet" href="css/style-form.css">
-
-  <script src="js/form.js"></script>
  
 </head>
 
@@ -30,7 +53,7 @@
             if(!empty($ids)){
               foreach ($ids as $id) {
                 echo '<li class="uploaded_img_li">
-                        <div class="img_wrapper"><img class="uploaded_image" src="private/media/'.$id.'" alt="default.jpg"></div>
+                        <div class="img_wrapper"><img class="uploaded_image" src="/loadMedia.php?file='.$id.'" alt="default.jpg"></div>
                         <br>
                         <button class="remove_uploaded_img" image_id="'.$id.'" type="button" onclick="removeimage(this)">Supprimer</button>
                       </li>';
@@ -74,7 +97,10 @@
 
   <div class="form-panel one">
     <div class="form-header">
-      <h1 style="display: inline-block; margin-right: 30px;">Insertion d'un nouveau produit</h1> *CVD = Complétable Via la Description
+      <h1 style="display: inline-block; margin-right: 30px;">Insertion d'un nouveau produit</h1> 
+      <p style="display: inline-block; margin-right: 30px;">*CVD = Complétable Via la Description</p>
+      <a style="margin-right: 30px; display: inline-block;  color: rgba(0,0,0,0.6);" href="#" onclick="addStone()">Ajouter une pierre</a>
+      <a style="margin-right: 30px; display: inline-block;  color: rgba(0,0,0,0.6);" href="#" onclick="addMetal()">Ajouter un métal</a>
     </div>
     
     <div class="form-content">
@@ -82,8 +108,8 @@
         <div class="form-collumn-container">
           <div class="form-collumn">
             <div class="form-group">
-              <label for="lot">Lot</label>
-              <input type="number" id="lot" name="lot" placeholder="Automatiquement fixé si non précisé"/>
+              <label for="lot">Lot (proposé automatiquement)</label>
+              <input type="text" id="lot" name="lot" value="<?= ($max+1) ?>"/>
             </div>
             <div class="form-group">
               <label for="buy_price">Prix d'achat (en €)</label>
@@ -96,9 +122,6 @@
             <div class="form-group">
               <label for="seller">Vendeur</label>
               <input type="text" id="seller" name="seller" required="required" list="seller_list"/>
-              <datalist id="seller_list">
-                <?php require("private/front/inc/seller_options.php") ?>
-              </datalist>
             </div>
           </div>
           <div class="form-collumn">
@@ -106,36 +129,28 @@
               <label for="type">Type (CVD)</label>
               <input class="autofill" type="text" list="type-list" id="type" name="type" required="required" placeholder="Complétable via la description"/>
               <datalist id="type-list">
-                <option value="bague">
-                <option value="bo">
-                <option value="colier">
-                <option value="broche">
+                <?php getDataList($pdo, "type") ?>
               </datalist>
-              <!--Attention à compléter tous les types qui existent-->
             </div>
             <div class="form-group">
               <label for="type2">Type 2 (CVD)</label>
-              <input class="autofill" type="text" list="type2-list" id="type2" name="type2" required="required" placeholder="Complétable via la description"/>
+              <input class="autofill" type="text" list="type2-list" id="type2" name="type2" placeholder="Complétable via la description"/>
               <datalist id="type2-list">
-                <option value="géométrique">
-                <option value="noeud">
-                <option value="créole">
-                <option value="turbogaz">
+                <?php getDataList($pdo, "type2") ?>
               </datalist>
-              <!--Attention à compléter tous les types qui existent-->
             </div>
             <div class="form-group">
-              <label for="periode">Période</label>
-              <input type="text" id="periode" name="periode" required="required" list="period_list"/>
+              <label for="periode">Période (CVD)</label>
+              <input class="autofill" type="text" id="periode" name="periode" list="period_list" placeholder="Complétable via la description"/>
               <datalist id="period_list">
-                <?php require("private/front/inc/period_options.php") ?>
+                <?php getDataList($pdo, "period") ?>
               </datalist>
             </div>
             <div class="form-group">
-              <label for="buy_price">Marque</label>
-              <input type="text" id="brand" name="brand" required="required" list="brand_list"/>
+              <label for="buy_price">Marque (CVD)</label>
+              <input class="autofill" type="text" id="brand" name="brand" list="brand_list" placeholder="Complétable via la description"/>
               <datalist id="brand_list">
-                <?php require("private/front/inc/brand_options.php") ?>
+                <?php getDataList($pdo, "brand") ?>
               </datalist>
             </div>
             
@@ -144,36 +159,23 @@
 
             <div class="form-group">
               <label for="metal">Métal (CVD)</label>
-              <select class="autofill" id="metal" name="metal" required="required" multiple="multiple" placeholder="Complétable via la description">
-                <option value="os">Or spécial</option>
-                <option value="oj2">Or jaune 2</option>
-                <option value="og">Or gris</option>
-                <option value="or">Or rose</option>
-                <option value="o14">Or 14k</option>
-                <option value="pla">Platine</option>
-                <option value="ag">Argent</option>
-                <option value="aci">Acier</option>
+              <select class="autofill" id="metal" name="metal[]" multiple="multiple" placeholder="Complétable via la description">
+                <?php getMetals($pdo)?>
               </select>
             </div>
             <div class="form-group">
               <label for="weight">Poids Brut (en g.) (CVD)</label>
-              <input type="number" step=".01" id="weight" name="weight" required="required" placeholder="Complétable via la description"/>
+              <input class="autofill" type="number" step=".01" id="weight" name="weight" required="required" placeholder="Complétable via la description"/>
             </div>
             <div class="form-group">
               <label for="pierre">Pierre (CVD)</label>
-              <select class="autofill" id="pierre" name="pierre" required="required" multiple="multiple" placeholder="Complétable via la description">
-                <option value="Diamant">Diamant</option>
-                <option value="Emeraude">Emeraude</option>
-                <option value="Saphir">Saphir</option>
-                <option value="Rubis">Rubis</option>
-                <option value="Aiguemarine">Aiguemarine</option>
-                <option value="Perle">Perle</option>
-                <option value="Autre pierre">Autre pierre</option>
+              <select class="autofill" id="pierre" name="pierre[]" multiple="multiple" placeholder="Complétable via la description">
+                <?php $stones = getStones($pdo) ?>
               </select>
             </div>
 
             <div class="form-group">
-              <label for="open_media">Médias</label>
+              <label for="open_media">Médias <span style="font-size:0.80em;">(insérer <span style="font-size:1.1em; text-decoration:underline;">avant</span> les autres infos)</span></label>
               <button id="open_media" type="button" onclick="openmediaadd()">Ajouter des médias</button>
               <!--<input type="file" id="picture" name="picture" disabled="disabled" placeholder="Clicker ici pour ajouter des images"/>-->
             </div>
@@ -187,7 +189,8 @@
           </div>
           <div class="form-group">
             <label for="sold" id="checkbox-label">Vendu</label>
-            <input type="checkbox" id="sold" name="sold"/>
+            <input type="hidden" name="sold" value="0"/>
+            <input type="checkbox" id="sold" name="sold" value="1"/>
           </div>
         </div>
         <div id="footer-line">
@@ -216,8 +219,8 @@
         ">
           <div class="form-collumn">
             <div class="form-group">
-              <label for="sell_place">Lieu de la vente</label>
-              <input type="text" id="sell_place" name="sell_place"/>
+              <label for="place">Confié à / Vendu à</label>
+              <input type="text" id="place" name="place"/>
             </div>
             <div class="form-group">
               <label for="sell_price">Prix de vente (en €)</label>
@@ -228,8 +231,8 @@
               <input type="date" id="sell_date" name="sell_date"/>
             </div>
             <div class="form-group">
-              <label for="omb">Oh my brooch!</label>
-              <input type="text" id="omb" name="omb" />
+              <label for="omb">Oh my brooch! (Prix)</label>
+              <input type="number" step=".01" id="omb" name="omb" />
             </div>
 
           </div>
@@ -247,8 +250,8 @@
               <input type="date" id="eed" name="eed" />
             </div>
             <div class="form-group">
-              <label for="facture">Identifiant facture</label>
-              <input type="text" id="facture" name="facture"/>
+              <label for="bill">Identifiant facture</label>
+              <input type="text" id="bill" name="bill"/>
             </div>
             
           </div>
@@ -265,15 +268,58 @@
 
 <script src='http://codepen.io/andytran/pen/vLmRVp.js'></script>
 <script src="js/index.js"></script>
+<script src="js/form.js"></script>
 <script>
   for (let input of document.querySelectorAll('input[type="text"]')) {
-      input.addEventListener("change", function(event) {
+    if(input.name == "description"){
+      continue;
+    }  
+    input.addEventListener("change", function(event) {
           let newValue = event.target.value;
           event.target.value = newValue.toLowerCase();
       });
   }
 </script>
 <script src="js/insert_autofill.js"></script>
+
+<script>
+  function update_length() {
+    let sel_stone = document.getElementById("pierre");
+    let length = 20 + document.getElementsByClassName("stone_option")[0].offsetHeight * sel_stone.length;
+    sel_stone.style.setProperty('--pierre-hover-height', (length + "px"));
+  }
+
+  update_length();
+
+  function addStone() {
+    let stone = prompt("Nom de la pierre");
+    while(stone == null || stone == ""){
+      stone = prompt("Nom de la pierre (merci d'entrer un nom non vide)");
+    }
+    let sel_stone = document.getElementById("pierre");
+    let opt = document.createElement("option");
+    opt.value = stone;
+    opt.innerHTML = stone;
+    opt.style.setProperty("font-weight", "bold");
+    sel_stone.appendChild(opt);
+    update_length();
+  }
+
+  function addMetal() {
+    let metal = prompt("Nom du métal");
+    while(metal == null || metal ==""){
+      metal = prompt("Nom du métal (merci d'entrer un nom non vide)");
+    }
+    let sel_metal = document.getElementById("metal");
+    let opt = document.createElement("option");
+    opt.value = metal;
+    opt.innerHTML = metal;
+    opt.style.setProperty("font-weight", "bold");
+    sel_metal.appendChild(opt);
+    update_length();
+  }
+  
+</script>
 
 <!-- END LOADING JS -->
 

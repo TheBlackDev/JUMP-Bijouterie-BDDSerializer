@@ -81,7 +81,7 @@ nav {
 
 .tile_grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(max(400px, 100%/5.5), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(max(300px, 100%/5.5), 1fr));
   justify-content: center;
   grid-gap: 30px;
   margin: 2%;
@@ -177,6 +177,7 @@ nav {
 }
 
 img {
+  object-fit: contain;
   width: 100%;
   height: 100%;
   align-self: center;
@@ -207,3 +208,87 @@ video {
   display: block;
 }
 
+.linkk {
+  color: white;
+  padding-top: 13px;
+  font-weight: bold;
+  font-family: roboto;
+}
+
+.link_container {
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color:#4285F4;
+  color: white;
+  text-align: center;
+  height:46px;
+  bottom:0px;
+  border-radius:4px;
+  margin-top: 22px;
+}
+
+.link_container.disabled {
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color:#95a5a6;
+  color: white;
+  text-align: center;
+  height:46px;
+  bottom:0px;
+  border-radius:4px;
+  margin-top: 22px;
+}
+
+.bottom_nav {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  grid-gap: 20px;
+  margin-bottom: 50px;
+  width: 70%;
+  margin-left: 15%;
+}
+
+
+
+.top_nav {
+  display: grid;
+  grid-template-columns: 2fr 5fr 2fr;
+  grid-gap: 20px;
+  margin-bottom: 50px;
+  background-color: white;
+  min-height: 70px;
+}
+
+.top_nav_link_container {
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color: #007aff;
+  text-align: center;
+  padding: 0, 10px;
+}
+
+.top_link {
+  color: white;
+  padding-top: 22px;
+  font-weight: bold;
+  font-size: 1.3em;
+  font-family: roboto;
+}
+
+.top_title_container {
+  text-align: center;
+}
+
+.top_title {
+  font-size: 2em;
+  font-weight: bold;
+  padding-top: 18px;
+  font-family: roboto;
+}
+
+.erase_link {
+  display: inline;
+  color: rgba(0,0,0,0.6);
+  font-family: roboto;
+  text-decoration: underline;
+}

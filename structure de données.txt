@@ -1,23 +1,26 @@
-DATE d_achat
-VARCHAR(255) seller
-VARCHAR(8) lot
-TEXT(5000) description
-INT() buy_price (on multiplie par 100)
-BOOLEAN sold
-VARCHAR(80) place
-INT() consigned_price
-DATE consigned_date
-VARCHAR(30) eesonia
-INT() eeprice
-DATE eedate
-INT() ombprice
-VARCHAR(20) bill
-VARCHAR(20) type
-VARCHAR(20) type2
-VARCHAR(30) period
-VARCHAR(255) metal
-VARCHAR(30) brand
-VARCHAR(255) stone
+
+VARCHAR(8) lot OK
+DATE buy_date OK
+VARCHAR(255) seller OK
+TEXT(5000) description OK
+INT() buy_price (on multiplie par 100) OK
+BOOLEAN sold OK
+VARCHAR(80) place OK
+INT() consigned_price OK
+DATE consigned_date OK
+VARCHAR(30) eesonia OK
+INT() eeprice OK
+DATE eedate OK
+INT() ombprice OK
+VARCHAR(20) bill OK
+VARCHAR(20) type OK
+VARCHAR(20) type2 OK
+VARCHAR(30) period OK
+VARCHAR(255) metal OK
+VARCHAR(30) brand OK
+VARCHAR(255) stone OK
+FLOAT weight OK
+TEXT media OK
 
 
 

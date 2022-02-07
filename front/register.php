@@ -1,5 +1,13 @@
 <?php
 
+    require_once 'private/front/inc/header.php';
+
+    if(!isset($_SESSION['auth'])) {
+        $_SESSION['flash']['warning'] = "Vous devez être connecté pour accéder à cette page!";
+        header('Location: login.php');
+        exit();
+    }
+
     require_once 'private/front/inc/db.php';
     require_once 'private/front/inc/functions.php';
 
